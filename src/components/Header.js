@@ -34,9 +34,12 @@ export default function Header() {
           >
             <Link
               href="/"
-              className="inline-block text-2xl font-georgia font-bold text-[#FF69B4] drop-shadow-[0_0_12px_rgba(255,105,180,0.5)] hover-lift"
+              className="inline-block text-1xl font-georgia font-bold text-[#FF9933] drop-shadow-[0_0_12px_rgba(255,105,180,0.5)] hover-lift"
             >
-              The Bharatheeya Seva Welfare Society
+              The Bharatheeya Seva Welfare Society<br/>
+              Registered under 12a and 80g
+              <br/>
+              Recognised by MCA,Govt. of India
             </Link>
           </motion.div>
         </div>
