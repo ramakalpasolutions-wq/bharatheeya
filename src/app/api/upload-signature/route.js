@@ -9,6 +9,8 @@ cloudinary.config({
   secure: true,
 });
 
+
+
 export async function GET(req) {
   try {
     // Get folder from query
