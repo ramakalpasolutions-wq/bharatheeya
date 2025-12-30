@@ -7,7 +7,7 @@ import mail from "react-useanimations/lib/mail";
 import loading2 from "react-useanimations/lib/loading2";
 import checkBox from "react-useanimations/lib/checkBox";
 import alertCircle from "react-useanimations/lib/alertCircle";
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaWhatsapp } from "react-icons/fa";
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaWhatsapp, FaBuilding } from "react-icons/fa";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -59,23 +59,16 @@ export default function Contact() {
 
   const contactInfo = [
     {
-      icon: FaMapMarkerAlt,
-      label: "Registered Office",
-      value: "D.No 12-128, Opp. Govt Hospital, Revenue Ward No. 14, Addanki, Bapatla District, Andhra Pradesh - 523201",
-      link: "https://www.google.com/maps?q=12-128,+OPP+GOVT+HOSPITAL,+ADDANKI,+Bapatla,+Andhra+Pradesh,+523201",
-      color: "from-pink-500 to-rose-500",
-    },
-    {
       icon: FaEnvelope,
       label: "Email",
-      value: "contact@bharatheeyaseva.org",
-      link: "mailto:contact@bharatheeyaseva.org",
+      value: "bharatheeyasevawelfaresociety@gmail.com",
+      link: "mailto:bharatheeyasevawelfaresociety@gmail.com",
       color: "from-purple-500 to-pink-500",
     },
     {
       icon: FaPhone,
-      label: "President - M L Subrahmanyam",
-      value: "+91 XXXXX XXXXX",
+      label: "Phone",
+      value: "+91 9121277663",
       link: "tel:+91",
       color: "from-rose-500 to-pink-500",
     },
@@ -85,6 +78,41 @@ export default function Contact() {
       value: "Get notifications & support via WhatsApp",
       link: "https://wa.me/91XXXXXXXXXX?text=Hello%2C%20I%20want%20to%20know%20about%20Bharatheeya%20Seva%20programs",
       color: "from-green-400 to-emerald-400",
+    },
+  ];
+
+  const officeLocations = [
+    {
+      type: "Head Office",
+      address: "D.No 12-128, Opp. Govt Hospital, Revenue Ward No. 14, Addanki, Bapatla District, Andhra Pradesh - 523201",
+      mapLink: "https://www.google.com/maps?q=12-128,+OPP+GOVT+HOSPITAL,+ADDANKI,+Bapatla,+Andhra+Pradesh,+523201",
+      contact: null,
+      contactPerson: null,
+      color: "from-[#8B1A5A] to-[#FF69B4]",
+    },
+    {
+      type: "Branch Office - Karnataka",
+      address: "H.No 152, Ward 24, Near Jumma Masjid, Cowl Bazaar, Bellary, Karnataka - 583101",
+      mapLink: "https://www.google.com/maps?q=152+Ward+24+Near+Jumma+Masjid+Cowl+Bazaar+Bellary+Karnataka+583101",
+      contact: "9731989505",
+      contactPerson: "C. Vittal Prasad (S/O. Virupanna Setty)",
+      color: "from-purple-500 to-pink-500",
+    },
+    {
+      type: "Branch Office - Tumkur",
+      address: "2nd Main, Door No 086, Vinayakanagar, Tumkur - 572101, Karnataka",
+      mapLink: "https://www.google.com/maps?q=2nd+Main+Door+No+086+Vinayakanagar+Tumkur+572101",
+      contact: "7846811143 / 6360281103",
+      contactPerson: "Ramashree TV (D/O Vasanthkumar)",
+      color: "from-pink-500 to-rose-500",
+    },
+    {
+      type: "Branch Office - Hyderabad",
+      address: "1-146/2/A, Shop No-2, Beside Sukh Sagara Hotel, Mothi Nagar, Hyderabad - 500018, Telangana",
+      mapLink: "https://www.google.com/maps?q=1-146/2/A+Shop+No-2+Beside+Sukh+Sagara+Hotel+Mothi+Nagar+Hyderabad+500018",
+      contact: "9494606789",
+      contactPerson: null,
+      color: "from-rose-500 to-pink-500",
     },
   ];
 
@@ -448,18 +476,121 @@ export default function Contact() {
           </motion.div>
         </motion.div>
 
-        {/* Location Map */}
+        {/* Office Locations Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.6, duration: 0.8 }}
+          className="mb-12"
+        >
+          <div className="text-center mb-12">
+            <span className="text-sm tracking-[0.3em] uppercase text-[#8B1A5A]/60 font-light">
+              Our Presence
+            </span>
+            <div className="w-20 h-px bg-gradient-to-r from-transparent via-[#FF69B4] to-transparent mx-auto mt-5 mb-8" 
+                 style={{ boxShadow: '0 0 10px rgba(255, 105, 180, 0.5)' }} />
+            <h2 className="text-4xl md:text-5xl font-light text-[#8B1A5A] mb-4">
+              Our <span className="font-serif italic text-[#FF69B4]">Locations</span>
+            </h2>
+            <p className="text-lg text-[#8B1A5A]/70 max-w-2xl mx-auto font-light leading-relaxed">
+              Visit us at any of our offices across India
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {officeLocations.map((office, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.8 + idx * 0.15, type: "spring" }}
+                className="backdrop-blur-2xl bg-white/40 rounded-3xl border border-white/60 p-6 lg:p-8 group hover:bg-white/50 transition-all duration-300"
+                style={{
+                  boxShadow: "0 8px 32px 0 rgba(139, 26, 90, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.5)",
+                }}
+                whileHover={{ y: -8, scale: 1.02 }}
+              >
+                <div className="flex items-start gap-5">
+                  <motion.div
+                    className="relative flex-shrink-0"
+                    whileHover={{ rotate: 360, scale: 1.15 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${office.color} blur-xl opacity-40 group-hover:opacity-70 transition-opacity`}
+                    />
+                    <div className="relative p-4 rounded-xl bg-gradient-to-br from-white/60 to-white/40 backdrop-blur-md border border-white/60">
+                      <FaBuilding className="text-3xl text-[#FF69B4]" />
+                    </div>
+                  </motion.div>
+
+                  <div className="flex-1 min-w-0">
+                    <div className="inline-block mb-3">
+                      <span className="px-4 py-1.5 rounded-full text-sm font-medium bg-gradient-to-r from-[#8B1A5A]/20 to-[#FF69B4]/20 text-[#8B1A5A] border border-[#FF69B4]/30">
+                        {office.type}
+                      </span>
+                    </div>
+
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-2">
+                        <FaMapMarkerAlt className="text-[#FF69B4] mt-1 flex-shrink-0" />
+                        <p className="text-[#8B1A5A]/80 font-light leading-relaxed text-sm">
+                          {office.address}
+                        </p>
+                      </div>
+
+                      {office.contactPerson && (
+                        <div className="flex items-start gap-2">
+                          <FaPhone className="text-[#FF69B4] mt-1 flex-shrink-0" />
+                          <p className="text-[#8B1A5A]/80 font-light text-sm">
+                            <strong className="text-[#8B1A5A] font-medium">{office.contactPerson}</strong>
+                          </p>
+                        </div>
+                      )}
+
+                      {office.contact && (
+                        <div className="flex items-start gap-2">
+                          <FaPhone className="text-[#FF69B4] mt-1 flex-shrink-0" />
+                          <a 
+                            href={`tel:+91${office.contact.replace(/[^0-9]/g, '').slice(0, 10)}`}
+                            className="text-[#8B1A5A]/80 hover:text-[#FF69B4] font-medium text-sm transition-colors"
+                          >
+                            {office.contact}
+                          </a>
+                        </div>
+                      )}
+
+                      <motion.a
+                        href={office.mapLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-full bg-gradient-to-r from-[#8B1A5A] to-[#FF69B4] text-white text-sm font-medium hover:shadow-lg transition-all duration-300"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <FaMapMarkerAlt />
+                        View on Map
+                      </motion.a>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Main Location Map (Head Office) */}
         <motion.div
           initial={{ opacity: 0, y: 50, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ delay: 1.6, duration: 0.8, type: "spring" }}
+          transition={{ delay: 2.4, duration: 0.8, type: "spring" }}
           className="backdrop-blur-2xl bg-white/40 rounded-3xl border border-white/60 p-8 shadow-[0_8px_32px_0_rgba(139,26,90,0.15)]"
           style={{
             boxShadow: "0 8px 32px 0 rgba(139, 26, 90, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.5)",
           }}
         >
           <h2 className="text-3xl md:text-4xl font-light text-[#8B1A5A] mb-8 text-center">
-            Find Us Here
+            Head Office Location
           </h2>
           <motion.div
             className="rounded-2xl overflow-hidden border-2 border-[#8B1A5A]/30"
@@ -474,7 +605,7 @@ export default function Contact() {
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="The Bharatheeya Seva Welfare Society Location"
+              title="The Bharatheeya Seva Welfare Society Head Office Location"
             ></iframe>
           </motion.div>
         </motion.div>

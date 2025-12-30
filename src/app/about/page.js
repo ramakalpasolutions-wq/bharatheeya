@@ -19,6 +19,8 @@ import {
   FaArrowRight,
   FaChevronDown,
   FaChevronUp,
+  FaUsersCog,
+  FaUserTie,
 } from "react-icons/fa";
 
 export default function About() {
@@ -29,12 +31,14 @@ export default function About() {
   const visionMissionRef = useRef(null);
   const valuesRef = useRef(null);
   const wingsRef = useRef(null);
+  const teamRef = useRef(null);
   const ctaRef = useRef(null);
 
   const isHeaderInView = useInView(headerRef, { once: true, amount: 0.3 });
   const isVisionMissionInView = useInView(visionMissionRef, { once: true, amount: 0.2 });
   const isValuesInView = useInView(valuesRef, { once: true, amount: 0.2 });
   const isWingsInView = useInView(wingsRef, { once: true, amount: 0.1 });
+  const isTeamInView = useInView(teamRef, { once: true, amount: 0.1 });
   const isCtaInView = useInView(ctaRef, { once: true, amount: 0.3 });
 
   const coreValues = [
@@ -103,16 +107,52 @@ export default function About() {
     }
   ];
 
+  const teamMembers = [
+    {
+      name: "Subrahmanyam M L",
+      designation: "President",
+      order: 1
+    },
+    {
+      name: "Venkata Siva Phanindra Sristi",
+      designation: "Vice President",
+      order: 2
+    },
+    {
+      name: "Hymavathi Manchalla",
+      designation: "Secretary",
+      order: 3
+    },
+    {
+      name: "Indira Devi Sristi",
+      designation: "Joint Secretary",
+      order: 4
+    },
+    {
+      name: "Narendra Gupta Gurram",
+      designation: "Treasurer",
+      order: 5
+    },
+    {
+      name: "Raghuveer Ponnuri",
+      designation: "EC Member",
+      order: 6
+    },
+    {
+      name: "Venkata Rama Krishna Chinni",
+      designation: "EC Member",
+      order: 7
+    }
+  ];
+
   const missionPoints = [
     "Provide comprehensive healthcare through medical camps, health awareness programs, and community health initiatives",
     "Empower individuals through literacy programs, skill development workshops, and educational scholarships",
     "Support senior citizens with shelter, care, food, clothing, and medical services through our Old Age Home Wing",
     "Promote and protect human rights through legal aid services, awareness campaigns, and research initiatives",
-    // "Combat corruption through whistleblower protection, investigation services, and anti-corruption awareness",
     "Empower women through skill development, entrepreneurship programs, legal aid, and health initiatives",
     "Support people with disabilities through rehabilitation services, support programs, and accessibility initiatives",
     "Foster youth development through leadership training, skill development, and community service projects",
-    // "Promote spiritual growth through community events, workshops, and spiritual guidance",
     "Preserve cultural heritage through temple management and community development initiatives"
   ];
 
@@ -153,7 +193,6 @@ export default function About() {
         ref={headerRef}
         className="relative py-21 sm:py-18 lg:py-21 overflow-hidden"
       >
-       
         <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -230,8 +269,6 @@ export default function About() {
             </motion.div>
           </motion.div>
         </div>
-
-       
       </motion.section>
 
       {/* Vision & Mission Section */}
@@ -557,6 +594,75 @@ export default function About() {
                 </motion.div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Team Members Section */}
+      <section ref={teamRef} className="relative py-20 sm:py-28 lg:py-36">
+        <div className="max-w-[1600px] mx-auto px-6 sm:px-8 lg:px-12">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isTeamInView ? { opacity: 1 } : {}}
+            transition={{ duration: 1 }}
+            className="text-center mb-16 sm:mb-20"
+          >
+            <span className="text-sm tracking-[0.3em] uppercase text-[#8B1A5A]/60 font-light">
+              Leadership
+            </span>
+            <div className="w-20 h-px bg-gradient-to-r from-transparent via-[#FF69B4] to-transparent mx-auto mt-5 mb-8" 
+                 style={{ boxShadow: '0 0 10px rgba(255, 105, 180, 0.5)' }} />
+            
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-[#8B1A5A] mb-6" 
+                style={{ textShadow: '0 4px 20px rgba(139, 26, 90, 0.1)' }}>
+              Our <span className="font-serif italic text-[#FF69B4]">Team</span>
+            </h2>
+            
+            <p className="text-lg text-[#8B1A5A]/70 max-w-3xl mx-auto font-light leading-relaxed">
+              Dedicated volunteers serving the community with commitment and integrity
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
+            {teamMembers.map((member, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                animate={isTeamInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: i * 0.1, duration: 0.8 }}
+                className="group relative backdrop-blur-2xl bg-white/40 rounded-3xl border border-white/60 p-6 lg:p-8 transition-all duration-500 overflow-hidden"
+                whileHover={{ y: -10 }}
+                style={{
+                  boxShadow: '0 8px 32px 0 rgba(139, 26, 90, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.5)'
+                }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                
+                <div className="relative z-10 text-center">
+                  <motion.div
+                    className="inline-block mb-6"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="backdrop-blur-md bg-white/30 rounded-2xl p-5 border border-white/40 inline-block"
+                         style={{ boxShadow: '0 4px 16px 0 rgba(139, 26, 90, 0.1), inset 0 1px 0 0 rgba(255, 255, 255, 0.3)' }}>
+                      <FaUserTie className="text-4xl text-[#8B1A5A]" 
+                              style={{ filter: 'drop-shadow(0 2px 4px rgba(139, 26, 90, 0.2))' }} />
+                    </div>
+                  </motion.div>
+
+                  <h3 className="text-lg sm:text-xl font-normal text-[#8B1A5A] mb-2 group-hover:text-[#FF69B4] transition-colors">
+                    {member.name}
+                  </h3>
+
+                  <div className="inline-block px-4 py-2 backdrop-blur-md bg-gradient-to-r from-[#8B1A5A]/10 to-[#FF69B4]/10 rounded-full border border-white/40">
+                    <p className="text-sm sm:text-base text-[#8B1A5A]/80 font-light">
+                      {member.designation}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
